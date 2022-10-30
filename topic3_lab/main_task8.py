@@ -9,14 +9,10 @@ increase = 0.05
 
 
 def month_for_live(money_capital, salary, spend, increase, month=0):
-    start_sum = money_capital
-    while money_capital + salary - spend >= 0:
-        if money_capital > start_sum * 20: # условие, чтобы избежать бесконечного цикла в случае ошибки
-            break
-        else:
-            money_capital = money_capital + salary - spend
-            spend = spend * (1 + increase)
-            month += 1
+    while money_capital - spend >= 0:
+        money_capital += salary - spend
+        spend *= 1 + increase
+        month += 1
     return month
 
 
